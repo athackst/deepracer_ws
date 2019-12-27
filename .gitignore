@@ -2,4 +2,3 @@ build/*
 devel/*
 install/*
 src/CMakeLists.txt
-src/*/*
