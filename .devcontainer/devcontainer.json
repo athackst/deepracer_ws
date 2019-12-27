@@ -1,0 +1,25 @@
+{
+	"name": "DeepRacerROS",
+	"dockerFile": "Dockerfile",
+	"context": "../",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"mounts": [
+		"source=/dev/input,target=/dev/input,type=bind"
+	],
+	"runArgs": [
+		"--privileged",
+		"--network=host",
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro"
+	],
+	"postCreateCommand": "sudo cp -r /root/.ssh-localhost ~ && sudo chown -R $(id -u):$(id -g) ~/.ssh-localhost && mv ~/.ssh-localhost ~/.ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/*",
+	"remoteUser": "vscode",
+	"extensions": [
+		"ms-iot.vscode-ros",
+		"redhat.vscode-yaml",
+		"twxs.cmake",
+		"yzhang.markdown-all-in-one"
+	]
+}
