@@ -6,17 +6,43 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "catkin_make"
+            "command": "catkin_make",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "build (debug)",
             "type": "shell",
-            "command": "catkin_make -DCMAKE_BUILD_TYPE=Debug"
+            "command": "catkin_make -DCMAKE_BUILD_TYPE=Debug",
+            "problemMatcher": [
+                "$gcc"
+            ],
         },
         {
             "label": "install",
             "type": "shell",
-            "command": "catkin_make install"
+            "command": "catkin_make install",
+            "problemMatcher": [
+                "$gcc"
+            ],
+        },
+        {
+            "label": "source",
+            "type": "shell",
+            "command": "echo \"sourcing install\" && source install/setup.bash || echo \"sourcing devel instead\" && source devel/setup.bash",
+            "problemMatcher": []
+        },
+        {
+            "label": "launch deepracer_joy",
+            "type": "shell",
+            "command": "roslaunch deepracer_joy deepracer_joy.launch",
+            "dependsOn": "source",
+            "problemMatcher": []
         }
     ]
 }
