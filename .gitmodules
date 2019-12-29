@@ -1,0 +1,6 @@
+[submodule "src/aws_deepracer_msgs"]
+	path = src/aws_deepracer_msgs
+	url = git@github.com:athackst/aws_deepracer_msgs.git
+[submodule "src/deepracer_joy"]
+	path = src/deepracer_joy
+	url = git@github.com:athackst/deepracer_joy.git

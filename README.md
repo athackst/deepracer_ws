@@ -2,6 +2,10 @@
 
 A VSCode workspace for the AWS DeepRacer.
 
+```bash
+git clone --recurse-submodules git@github.com:athackst/deepracer_ws.git
+```
+
 ## Setup
 
 In VSCode, open this workspace in the included container.
