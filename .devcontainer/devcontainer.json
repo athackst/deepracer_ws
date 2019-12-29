@@ -5,9 +5,6 @@
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
-	"mounts": [
-		"source=/dev/input,target=/dev/input,type=bind"
-	],
 	"runArgs": [
 		"--privileged",
 		"--network=host",
