@@ -10,19 +10,21 @@ Get the code.
 git clone --recurse-submodules git@github.com:athackst/deepracer_ws.git
 ```
 
-In VSCode, open this workspace in the included container.
-
 ## Building
+
+### VS Code
+
+In VSCode, open this workspace in the included container.
 
 You can build the code in one of two ways; using the integrated terminal, or using a pre-defined task.
 
-### Terminal
+#### Terminal
 
 ```bash
 catkin_make install
 ```
 
-### Task
+#### Task
 
 Alternatively, you can use one of the pre-configured vscode tasks to build and debug your code
 
@@ -32,7 +34,7 @@ Terminal->Run Task
 * build (debug) : build with debug output
 * install : default development install
 
-## Local setup
+### Local
 
 If you'd prefer to run natively instead of in the provided container
 
@@ -52,7 +54,7 @@ If you'd prefer to run natively instead of in the provided container
 4. Build the code
 
    ```bash
-   catin_make install
+   catkin_make install
    ```
 
 ## Run
