@@ -34,7 +34,7 @@
         {
             "label": "source",
             "type": "shell",
-            "command": "echo \"sourcing install\" && source install/setup.bash || echo \"sourcing devel instead\" && source devel/setup.bash",
+            "command": "source install/setup.bash 2> /dev/null || source devel/setup.bash",
             "problemMatcher": []
         },
         {

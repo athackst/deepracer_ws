@@ -30,8 +30,12 @@ RUN groupadd --gid $USER_GID $USERNAME \
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
 
-# Set up user bash
-RUN echo "source /opt/ros/kinetic/setup.bash" >> /home/vscode/.bashrc
+# Set up environment
+ENV ROS_PACKAGE_PATH=/workspaces/deepracer_ws/install/share:/workspaces/deepracer_ws/src:$ROS_PACKAGE_PATH
+ENV LD_LIBRARY_PATH=/workspaces/deepracer_ws/install/lib:/workspaces/deepracer_ws/devel/lib:$LD_LIBRARY_PATH
+ENV ROSLISP_PACKAGE_DIRECTORIES=/workspaces/deepracer_ws/devel/share/common-lisp
+ENV PYTHONPATH=/workspaces/deepracer_ws/install/lib/python2.7/dist-packages:/workspaces/deepracer_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH
+ENV PKG_CONFIG_PATH=/workspaces/deepracer_ws/install/lib/pkgconfig:/workspaces/deepracer_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH
+ENV CMAKE_PREFIX_PATH=/workspaces/deepracer_ws/install:/workspaces/deepracer_ws/devel:$CMAKE_PREFIX_PATH
 
-ENTRYPOINT [ "/setup/ros_entrypoint.sh" ]
 CMD ["bash"]
