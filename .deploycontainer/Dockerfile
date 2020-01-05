@@ -1,9 +1,20 @@
+#------- Builder stage
+FROM athackst/ros:kinetic-dev as builder
+
+COPY install_depends.sh /setup/install_depends.sh
+RUN ./setup/install_depends.sh && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspaces/deepracer_ws/
+COPY src ./src
+RUN catkin_make -DCMAKE_INSTALL_PREFIX=/opt/deepracer_ws install
+
+#------- Deployment stage
 FROM athackst/ros:kinetic-base
 
 COPY install_depends.sh /setup/install_depends.sh
-RUN ./setup/install_depends.sh
+RUN ./setup/install_depends.sh && rm -rf /var/lib/apt/lists/*
 
-COPY install /opt/deepracer_ws/
+COPY --from=builder /opt/deepracer_ws/ /opt/deepracer_ws/
 
 # Set up environment
 ENV ROS_PACKAGE_PATH=/opt/deepracer_ws/share:/workspaces/deepracer_ws/src:$ROS_PACKAGE_PATH
