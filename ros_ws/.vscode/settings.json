@@ -17,4 +17,5 @@
         "ws",
         "wstool"
     ],
+    "restructuredtext.confPath": "",
 }
