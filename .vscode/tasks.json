@@ -32,15 +32,9 @@
             ],
         },
         {
-            "label": "source",
-            "type": "shell",
-            "command": "source install/setup.bash 2> /dev/null || source devel/setup.bash",
-            "problemMatcher": []
-        },
-        {
             "label": "launch deepracer_joy",
             "type": "shell",
-            "command": "roslaunch deepracer_joy deepracer_joy.launch",
+            "command": "source install/setup.bash 2> /dev/null || source devel/setup.bash && roslaunch deepracer_joy deepracer_joy.launch",
             "dependsOn": "source",
             "problemMatcher": []
         }
