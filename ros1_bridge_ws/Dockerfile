@@ -18,18 +18,25 @@ RUN apt-get update && apt-get install -y \
   libboost-regex-dev \
   libboost-signals-dev \
   libboost-thread-dev \
-  liblog4cxx-dev 
+  liblog4cxx-dev \
+  && rm -rf /var/lib/apt/lists/*
 
 COPY ros2_ws/src/aws_deepracer_msgs/ /workspaces/ros2/src/aws_deepracer_msgs/
 WORKDIR /workspaces/ros2
 RUN colcon build --merge-install --install-base /opt/ros/eloquent
+
+# install melodic
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' \
+  && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
+  && apt-get update \
+  && apt-get install -y ros-melodic-ros-base \
+  && rm -rf /var/lib/apt/lists/*
 
 COPY --from=ros1_builder /opt/ros/melodic /opt/ros/melodic
 
 ENV LD_LIBRARY_PATH=/opt/ros/melodic/lib:/opt/ros/eloquent/lib
 ENV AMENT_PREFIX_PATH=/opt/ros/eloquent
 ENV ROS_ETC_DIR=/opt/ros/melodic/etc/ros
-# ENV CMAKE_PREFIX_PATH=/opt/ros/melodic
 ENV COLCON_PREFIX_PATH=/opt/ros/eloquent
 ENV ROS_ROOT=/opt/ros/melodic/share/ros
 ENV ROS_MASTER_URI=http://localhost:11311
@@ -48,3 +55,5 @@ COPY ros1_bridge_ws/src/ src/
 RUN colcon build --symlink-install --packages-select ros1_bridge --cmake-force-configure
 
 RUN bash -c "source install/local_setup.bash && ros2 run ros1_bridge dynamic_bridge --print-pairs"
+
+CMD ["bash"]
