@@ -1,6 +1,7 @@
 - git:
     local-name: aws_deepracer_msgs
     uri: git@github.com:athackst/aws_deepracer_msgs.git
+    version: kinetic
 - git:
     local-name: deepracer_joy
     uri: git@github.com:athackst/deepracer_joy.git

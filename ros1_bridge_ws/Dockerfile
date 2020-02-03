@@ -9,6 +9,19 @@ RUN catkin_make install -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic
 # Build the ros2 messages
 FROM athackst/ros2:eloquent-dev as ros2_builder
 
+COPY ros2_ws/src/aws_deepracer_msgs/ /workspaces/ros2/src/aws_deepracer_msgs/
+WORKDIR /workspaces/ros2
+RUN colcon build --merge-install --install-base /opt/ros/eloquent
+
+# install melodic
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' \
+  && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
+  && apt-get update \
+  && apt-get install -y ros-melodic-ros-base \
+  && rm -rf /var/lib/apt/lists/*
+COPY --from=ros1_builder /opt/ros/melodic /opt/ros/melodic
+
+# Deps for building the bridge
 RUN apt-get update && apt-get install -y \
   ros-eloquent-launch-testing \
   ros-eloquent-launch-testing-ament-cmake \
@@ -20,19 +33,6 @@ RUN apt-get update && apt-get install -y \
   libboost-thread-dev \
   liblog4cxx-dev \
   && rm -rf /var/lib/apt/lists/*
-
-COPY ros2_ws/src/aws_deepracer_msgs/ /workspaces/ros2/src/aws_deepracer_msgs/
-WORKDIR /workspaces/ros2
-RUN colcon build --merge-install --install-base /opt/ros/eloquent
-
-# install melodic
-RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' \
-  && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
-  && apt-get update \
-  && apt-get install -y ros-melodic-ros-base \
-  && rm -rf /var/lib/apt/lists/*
-
-COPY --from=ros1_builder /opt/ros/melodic /opt/ros/melodic
 
 ENV LD_LIBRARY_PATH=/opt/ros/melodic/lib:/opt/ros/eloquent/lib
 ENV AMENT_PREFIX_PATH=/opt/ros/eloquent
