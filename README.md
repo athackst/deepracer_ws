@@ -1,6 +1,6 @@
 # aws_deepracer_ws
 
-A VSCode workspace for the AWS DeepRacer.
+A development workspace for the AWS DeepRacer.
 
 ## Setup
 
@@ -52,63 +52,22 @@ If you'd prefer to run natively instead of in the provided container
    catkin_make install
    ```
 
-## Run
+## deepracer_joy
 
-Run the code inside the docker container
+Make a docker container for controlling the deepracer with a gamepad/joystick
 
-1. Create a deployment image
+1. Create the docker image
 
     ```bash
-    docker build -f .deploycontainer/Dockerfile . -t localhost:5000/deepracer_ws
+    docker build -f deepracer_joy.dockerfile . -t localhost:5000/deepracer_joy
     ```
 
 2. Run the docker image with the launch file.
 
     ```bash
-    docker run -it --network=host --privileged -e ROS_MASTER_URI=http://$DEEPRACER_IP:11311 localhost:5000/deepracer_ws roslaunch deepracer_joy deepracer_joy.launch
+    docker run -it --network=host --privileged -e ROS_MASTER_URI=http://$DEEPRACER_IP:11311 localhost:5000/deepracer_joy roslaunch deepracer_joy deepracer_joy.launch
     ```
 
     You will need to run the container attached to the host network, with elevated privileges (for the input device), and with the ROS_MASTER_URI set to the IP address of your DeepRacer.
 
-## Deploy
-
-Once you've created your container, you can optionally load it onto your DeepRacer.  This is most easily done by setting up a local docker registry and pulling the image onto the DeepRacer from it.
-
-1. Start a local docker registry
-
-    ```bash
-    docker run -d -p 5000:5000 --restart always --name registry registry:2
-    ```
-
-2. Push your image to the registry
-
-    ```bash
-    docker push localhost:5000/deepracer_ws
-    ```
-
-3. Set up your deepracer with [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-   Be sure to add the `deepracer` user to the `docker` group
-
-4. Add your host to `/etc/docker/daemon.json`
-
-    ```json
-    { "insecure-registries":["your_hostname.local:5000"] }
-    ```
-
-    Where `your_hostname` is the hostname of the computer running the docker registry.
-
-    This will let you connect to your local docker registry with an unsecured connection.
-
-5. Pull the image
-
-   ```bash
-   docker pull your_hostname.local:5000/deepracer_ws
-   ```
-
-6. Run the image.
-
-    Run the image the same way you did on the remote machine
-
-    ```bash
-    docker run -it --network=host --privileged -e ROS_MASTER_URI=http://localhost:11311 your_hostname.local:5000/deepracer_ws roslaunch deepracer_joy deepracer_joy.launch
-    ```
+See my articles on [controlling the deepracer with a gamepad](http://lyonthackston.com/articles/3_deepracer_joy.html) and [running the deepracer_joy container onboard](http://lyonthackston.com/articles/4_deepracer_joy_onboard.html) for more information.
