@@ -39,19 +39,14 @@ Terminal->Run Task
 If you'd prefer to run natively instead of in the provided container
 
 1. Install [ROS Kinetic](http://wiki.ros.org/kinetic/Installation) (for compatibility with the AWS DeepRacer)
+
 2. Install dependencies
 
     ```bash
     ./install_depends.sh
     ```
 
-3. Download the source code.
-
-   ```bash
-   wstool up -t src
-   ```
-
-4. Build the code
+3. Build the code
 
    ```bash
    catkin_make install

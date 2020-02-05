@@ -4,6 +4,10 @@
         "/workspaces/aws_deepracer_ws/devel/lib/python2.7/dist-packages",
         "/opt/ros/kinetic/lib/python2.7/dist-packages"
     ],
+    "python.formatting.autopep8Args": [
+      "--max-line-length = 99",
+      "--ignore = ''"
+    ],
     "files.associations": {
         ".rosinstall": "yaml"
     },
@@ -11,6 +15,7 @@
         "athackst",
         "deepracer",
         "deploycontainer",
+        "gamepad",
         "recurse",
         "roslaunch",
         "submodules",
