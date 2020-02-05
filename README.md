@@ -4,7 +4,7 @@ A VSCode workspace for the AWS DeepRacer.
 
 ## Setup
 
-Get the code 
+Get the code.
 
 ```bash
 git clone --recurse-submodules git@github.com:athackst/deepracer_ws.git
@@ -37,20 +37,15 @@ Terminal->Run Task
 If you'd prefer to run natively instead of in the provided container
 
 1. Install [ROS Kinetic](http://wiki.ros.org/kinetic/Installation) (for compatibility with the AWS DeepRacer)
+
 2. Install dependencies
 
     ```bash
     ./install_depends.sh
     ```
 
-3. Download the source code 
-   
-   ```bash
-   wstool up -t src
-   ```
+3. Build the code
 
-4. Build the code
-   
    ```bash
-   catin_make
+   catkin_make
    ```
