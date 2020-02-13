@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+      ".rosinstall": "yaml"
+  },
+  "cSpell.words": [
+      "athackst",
+      "deepracer",
+      "deploycontainer",
+      "recurse",
+      "roslaunch",
+      "submodules",
+      "ws",
+      "wstool"
+  ]
+}
