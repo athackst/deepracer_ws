@@ -1,0 +1,15 @@
+{
+  "python.autoComplete.extraPaths": [
+    "/opt/ros/eloquent/lib/python3.6/site-packages",
+    "/opt/ros/melodic/lib/python2.7/dist-packages"
+  ],
+  "python.formatting.autopep8Args": [
+    "--max-line-length",
+    "99",
+    "--ignore", 
+    "D100,D103,D104",
+    "--aggressive", 
+    "--aggressive"
+  ],
+  "editor.rulers": [99]
+}

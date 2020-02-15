@@ -1,0 +1,35 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558 
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build ros1 messages",
+      "type": "shell",
+      "group": "build",
+      "command": "source /opt/ros/melodic/setup.bash && /opt/ros/melodic/bin/catkin_make install -C ${workspaceFolder}/../ros_ws -DCMAKE_INSTALL_PREFIX=melodic",
+      "problemMatcher": []
+    },
+    {
+      "label": "build ros2 messages",
+      "type": "shell",
+      "group": "build",
+      "command": "source /opt/ros/eloquent/setup.bash && colcon build --base-paths ${workspaceFolder}/../ros2_ws --merge-install --install-base eloquent",
+      "problemMatcher": []
+    },
+    {
+      "label": "build ros1_bridge",
+      "type": "shell",
+      "group": "build",
+      "command": "source env.sh && colcon build --base-paths ${workspaceFolder} --merge-install --symlink-install --packages-select ros1_bridge --cmake-force-configure --install-base ros1_bridge",
+      "problemMatcher": []
+    },
+    {
+      "label": "ros1_bridge print pairs",
+      "type": "shell",
+      "group": "none",
+      "command": "source env.sh && source ros1_bridge/local_setup.bash && ros2 run ros1_bridge dynamic_bridge --print-pairs",
+      "problemMatcher": []
+    }
+  ]
+}
