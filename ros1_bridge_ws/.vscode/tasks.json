@@ -21,14 +21,14 @@
       "label": "build ros1_bridge",
       "type": "shell",
       "group": "build",
-      "command": "source env.sh && colcon build --base-paths ${workspaceFolder} --merge-install --symlink-install --packages-select ros1_bridge --cmake-force-configure --install-base ros1_bridge",
+      "command": "source env.sh && colcon build --base-paths ${workspaceFolder} --merge-install --symlink-install --packages-select ros1_bridge --cmake-force-configure --install-base bridge",
       "problemMatcher": []
     },
     {
       "label": "ros1_bridge print pairs",
       "type": "shell",
       "group": "none",
-      "command": "source env.sh && source ros1_bridge/local_setup.bash && ros2 run ros1_bridge dynamic_bridge --print-pairs",
+      "command": "source env.sh && source bridge/local_setup.bash && ros2 run ros1_bridge dynamic_bridge --print-pairs",
       "problemMatcher": []
     }
   ]
