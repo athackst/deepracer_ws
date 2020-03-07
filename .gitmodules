@@ -1,15 +1,15 @@
 [submodule "ros_ws/src/aws_deepracer_msgs"]
 	path = ros_ws/src/aws_deepracer_msgs
-	url = git@github.com:athackst/aws_deepracer_msgs.git
+	url = ../aws_deepracer_msgs.git
 	branch = kinetic
 [submodule "ros_ws/src/deepracer_joy"]
 	path = ros_ws/src/deepracer_joy
-	url = git@github.com:athackst/deepracer_joy.git
+	url = ../deepracer_joy.git
 [submodule "ros2_ws/src/aws_deepracer_msgs"]
 	path = ros2_ws/src/aws_deepracer_msgs
-	url = git@github.com:athackst/aws_deepracer_msgs.git
+	url = ../aws_deepracer_msgs.git
 	branch = eloquent
 [submodule "ros1_bridge_ws/src/ros1_bridge"]
 	path = ros1_bridge_ws/src/ros1_bridge
-	url = git@github.com:athackst/ros1_bridge.git
+	url = ../ros1_bridge.git
 	branch = eloquent_dev

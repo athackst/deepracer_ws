@@ -7,14 +7,14 @@
       "label": "build ros1 messages",
       "type": "shell",
       "group": "build",
-      "command": "source /opt/ros/melodic/setup.bash && /opt/ros/melodic/bin/catkin_make install -C ${workspaceFolder}/../ros_ws -DCMAKE_INSTALL_PREFIX=melodic",
+      "command": "source /opt/ros/melodic/setup.bash && /opt/ros/melodic/bin/catkin_make install -C ${workspaceFolder}/../ros_ws --only-pkg-with-deps aws_deepracer_msgs -DCMAKE_INSTALL_PREFIX=melodic",
       "problemMatcher": []
     },
     {
       "label": "build ros2 messages",
       "type": "shell",
       "group": "build",
-      "command": "source /opt/ros/eloquent/setup.bash && colcon build --base-paths ${workspaceFolder}/../ros2_ws --merge-install --install-base eloquent",
+      "command": "source /opt/ros/eloquent/setup.bash && colcon build --base-paths ${workspaceFolder}/../ros2_ws --merge-install --install-base eloquent --packages-select aws_deepracer_msgs",
       "problemMatcher": []
     },
     {
