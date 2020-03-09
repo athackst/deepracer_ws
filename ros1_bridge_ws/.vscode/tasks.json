@@ -14,7 +14,7 @@
       "label": "build ros2 messages",
       "type": "shell",
       "group": "build",
-      "command": "source /opt/ros/eloquent/setup.bash && colcon build --base-paths ${workspaceFolder}/../ros2_ws --merge-install --install-base eloquent --packages-select aws_deepracer_msgs",
+      "command": "source /opt/ros/eloquent/setup.bash && colcon build --base-paths ${workspaceFolder}/../ros2_ws --merge-install --install-base eloquent --packages-up-to aws_deepracer_msgs",
       "problemMatcher": []
     },
     {
