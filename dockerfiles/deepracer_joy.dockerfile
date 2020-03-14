@@ -1,4 +1,6 @@
-#------- Builder stage
+#
+# Build stage
+# ------------------------
 FROM athackst/ros:kinetic-dev as builder
 
 WORKDIR /workspaces
@@ -8,7 +10,9 @@ RUN git clone --branch articles/deepracer_ros2_bridge --recurse-submodules https
  && catkin_make -DCMAKE_INSTALL_PREFIX=/opt/deepracer_ws install \
  && rm -rf /var/lib/apt/lists/*
 
-#------- Deployment stage
+#
+# Deployment stage
+# ------------------------
 FROM athackst/ros:kinetic-base
 
 COPY --from=builder /workspaces/deepracer_ws/ros_ws/install_depends.sh /setup/install_depends.sh
