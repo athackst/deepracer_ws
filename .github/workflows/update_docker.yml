@@ -11,6 +11,7 @@ on:
       - "master"
     paths:
       - "dockerfiles/**"
+      - ".github/workflows/update_docker.yml"
 
 jobs:
   ros:
