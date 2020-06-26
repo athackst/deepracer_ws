@@ -11,11 +11,11 @@
         "athackst",
         "deepracer",
         "deploycontainer",
+        "gamepad",
         "recurse",
         "roslaunch",
         "submodules",
         "ws",
         "wstool"
     ],
-    "restructuredtext.confPath": "",
 }
