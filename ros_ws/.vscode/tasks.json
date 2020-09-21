@@ -32,6 +32,19 @@
             ],
         },
         {
+            "label": "expunge",
+            "type": "shell",
+            "command": "rm -fr build devel install",
+            "problemMatcher": [],
+        },
+        {
+            "label": "install dependencies",
+            "detail": "Install all dependencies specified in the workspaces package.xml files.",
+            "type": "shell",
+            "command": "sudo apt-get update && rosdep update && rosdep install --from-paths src --ignore-src -y",
+            "problemMatcher": []
+        },
+        {
             "label": "launch deepracer_joy",
             "type": "shell",
             "command": "source install/setup.bash 2> /dev/null || source devel/setup.bash && roslaunch deepracer_joy deepracer_joy.launch",

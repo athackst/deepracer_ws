@@ -6,16 +6,16 @@
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 	"runArgs": [
-		"--privileged",
-		"--network=host",
-		"-v",
-		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro"
+		"--privileged", // For joystick tests
+		"--network=host", // For ros comm ports
 	],
-	"postCreateCommand": "sudo cp -r /root/.ssh-localhost ~ && sudo chown -R $(id -u):$(id -g) ~/.ssh-localhost && mv ~/.ssh-localhost ~/.ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/*",
-	"remoteUser": "vscode",
+	"postCreateCommand": "sudo apt-get update && rosdep update && rosdep install --from-paths src --ignore-src -y",
+	"remoteUser": "ros",
 	"extensions": [
 		"ms-iot.vscode-ros",
+		"ms-vscode.cpptools",
 		"redhat.vscode-yaml",
+		"streetsidesoftware.code-spell-checker",
 		"twxs.cmake",
 		"yzhang.markdown-all-in-one"
 	]
